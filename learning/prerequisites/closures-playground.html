@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closures Playground - Test Your Skills</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .challenge {
+        background: #f5f5f5;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 8px;
+      }
+      .test-area {
+        background: #e8f5e8;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 4px;
+      }
+      button {
+        background: #007acc;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      button:hover {
+        background: #005fa3;
+      }
+      .output {
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px 0;
+        min-height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎯 Closures Mastery Challenges</h1>
+    <p>
+      <strong>Goal:</strong> Implement each challenge to test your closure
+      understanding!
+    </p>
+
+    <!-- CHALLENGE 1: Basic Counter -->
+    <div class="challenge">
+      <h3>Challenge 1: Create a Counter Factory</h3>
+      <p>
+        <strong>Task:</strong> Write a function
+        <code>createCounter()</code> that returns a function. Each returned
+        function should:
+      </p>
+      <ul>
+        <li>Start counting from 0</li>
+        <li>Increment by 1 each time it's called</li>
+        <li>Return the current count</li>
+      </ul>
+
+      <div class="test-area">
+        <button onclick="testCounter()">Test My Counter</button>
+        <div class="output" id="counter-output">
+          Results will appear here...
+        </div>
+      </div>
+    </div>
+
+    <!-- CHALLENGE 2: Multiple Independent Counters -->
+    <div class="challenge">
+      <h3>Challenge 2: Independent Counter Instances</h3>
+      <p>
+        <strong>Task:</strong> Create two separate counters using your factory
+        function. Show they maintain independent state.
+      </p>
+
+      <div class="test-area">
+        <button onclick="testMultipleCounters()">
+          Test Independent Counters
+        </button>
+        <div class="output" id="multiple-counter-output">
+          Results will appear here...
+        </div>
+      </div>
+    </div>
+
+    <!-- CHALLENGE 3: Counter with Custom Start -->
+    <div class="challenge">
+      <h3>Challenge 3: Customizable Counter</h3>
+      <p>
+        <strong>Task:</strong> Modify your factory to accept a starting number.
+        <code>createCounter(5)</code> should start from 5.
+      </p>
+
+      <div class="test-area">
+        <button onclick="testCustomCounter()">Test Custom Start</button>
+        <div class="output" id="custom-counter-output">
+          Results will appear here...
+        </div>
+      </div>
+    </div>
+
+    <!-- CHALLENGE 4: Private State Object -->
+    <div class="challenge">
+      <h3>Challenge 4: Private User Profile</h3>
+      <p>
+        <strong>Task:</strong> Create a <code>createUser(name)</code> factory
+        that returns an object with:
+      </p>
+      <ul>
+        <li><code>getName()</code> - returns the name</li>
+        <li><code>getAge()</code> - returns current age (starts at 0)</li>
+        <li><code>birthday()</code> - increases age by 1</li>
+      </ul>
+      <p>
+        <strong>Requirement:</strong> Name and age should be private (not
+        directly accessible)!
+      </p>
+
+      <div class="test-area">
+        <button onclick="testUserProfile()">Test User Profile</button>
+        <div class="output" id="user-output">Results will appear here...</div>
+      </div>
+    </div>
+
+    <!-- CHALLENGE 5: Vue-like Reactive Value -->
+    <div class="challenge">
+      <h3>Challenge 5: Simple Reactive Value (Vue-style)</h3>
+      <p>
+        <strong>Task:</strong> Create
+        <code>createReactive(initialValue)</code> that returns an object with:
+      </p>
+      <ul>
+        <li><code>value</code> - property to get/set the value</li>
+        <li>
+          <code>subscribe(callback)</code> - calls callback when value changes
+        </li>
+      </ul>
+
+      <div class="test-area">
+        <button onclick="testReactive()">Test Reactive Value</button>
+        <div class="output" id="reactive-output">
+          Results will appear here...
+        </div>
+        <input
+          type="text"
+          id="reactive-input"
+          placeholder="Change this to test reactivity"
+        />
+      </div>
+    </div>
+
+    <script>
+      // ========================================
+      // YOUR IMPLEMENTATIONS GO HERE
+      // ========================================
+
+      // Challenge 2: Uses your createCounter() function
+
+      // Challenge 3: Modify createCounter to accept starting value
+      function createCounterWithStart(start) {
+        // TODO: Your implementation here
+      }
+
+      // Challenge 4: Implement createUser(name)
+      function createUser(name) {
+        // TODO: Your implementation here
+        // Should return object with getName(), getAge(), birthday() methods
+      }
+
+      // Challenge 5: Implement createReactive(initialValue)
+      function createReactive(initialValue) {
+        // TODO: Your implementation here
+        // Should return object with value property and subscribe method
+      }
+
+      // ========================================
+      // TEST FUNCTIONS (DON'T MODIFY THESE)
+      // ========================================
+
+      function testCounter() {
+        const output = document.getElementById("counter-output");
+        try {
+          const counter = createCounter();
+          const results = [];
+          results.push(`First call: ${counter()}`);
+          results.push(`Second call: ${counter()}`);
+          results.push(`Third call: ${counter()}`);
+
+          output.innerHTML =
+            `<strong>✅ Success!</strong><br>` + results.join("<br>");
+          output.style.background = "#e8f5e8";
+        } catch (error) {
+          output.innerHTML = `<strong>❌ Error:</strong> ${error.message}`;
+          output.style.background = "#ffe8e8";
+        }
+      }
+
+      // Challenge 1: Implement createCounter()
+      function createCounter() {
+        // TODO: Your implementation here
+        // Should return a function that increments and returns count
+      }
+
+      function testMultipleCounters() {
+        const output = document.getElementById("multiple-counter-output");
+        try {
+          const counter1 = createCounter();
+          const counter2 = createCounter();
+
+          const results = [];
+          results.push(`Counter1: ${counter1()} ${counter1()}`);
+          results.push(`Counter2: ${counter2()}`);
+          results.push(`Counter1 again: ${counter1()}`);
+
+          output.innerHTML =
+            `<strong>✅ Success!</strong><br>` + results.join("<br>");
+          output.style.background = "#e8f5e8";
+        } catch (error) {
+          output.innerHTML = `<strong>❌ Error:</strong> ${error.message}`;
+          output.style.background = "#ffe8e8";
+        }
+      }
+
+      function testCustomCounter() {
+        const output = document.getElementById("custom-counter-output");
+        try {
+          const counter = createCounterWithStart(5);
+          const results = [];
+          results.push(`Starting from 5: ${counter()}`);
+          results.push(`Next: ${counter()}`);
+
+          output.innerHTML =
+            `<strong>✅ Success!</strong><br>` + results.join("<br>");
+          output.style.background = "#e8f5e8";
+        } catch (error) {
+          output.innerHTML = `<strong>❌ Error:</strong> ${error.message}`;
+          output.style.background = "#ffe8e8";
+        }
+      }
+
+      function testUserProfile() {
+        const output = document.getElementById("user-output");
+        try {
+          const user = createUser("Alice");
+          const results = [];
+          results.push(`Name: ${user.getName()}`);
+          results.push(`Initial age: ${user.getAge()}`);
+          user.birthday();
+          user.birthday();
+          results.push(`After 2 birthdays: ${user.getAge()}`);
+
+          // Test privacy
+          const hasPrivateAccess =
+            user.name !== undefined || user.age !== undefined;
+          results.push(
+            `Private data hidden: ${!hasPrivateAccess ? "✅" : "❌"}`
+          );
+
+          output.innerHTML =
+            `<strong>✅ Success!</strong><br>` + results.join("<br>");
+          output.style.background = "#e8f5e8";
+        } catch (error) {
+          output.innerHTML = `<strong>❌ Error:</strong> ${error.message}`;
+          output.style.background = "#ffe8e8";
+        }
+      }
+
+      function testReactive() {
+        const output = document.getElementById("reactive-output");
+        const input = document.getElementById("reactive-input");
+
+        try {
+          const reactive = createReactive("Hello");
+          const messages = [];
+
+          // Subscribe to changes
+          reactive.subscribe((newValue) => {
+            messages.push(`Value changed to: ${newValue}`);
+            output.innerHTML =
+              `<strong>🔄 Reactive Updates:</strong><br>` +
+              messages.join("<br>");
+          });
+
+          // Test initial value
+          messages.push(`Initial value: ${reactive.value}`);
+
+          // Connect input to reactive value
+          input.addEventListener("input", () => {
+            reactive.value = input.value;
+          });
+
+          // Test programmatic change
+          setTimeout(() => {
+            reactive.value = "Changed programmatically!";
+          }, 1000);
+
+          output.innerHTML =
+            `<strong>✅ Setup complete!</strong><br>` +
+            messages.join("<br>") +
+            "<br><em>Type in the input above to see reactivity in action!</em>";
+          output.style.background = "#e8f5e8";
+        } catch (error) {
+          output.innerHTML = `<strong>❌ Error:</strong> ${error.message}`;
+          output.style.background = "#ffe8e8";
+        }
+      }
+    </script>
+  </body>
+</html>
