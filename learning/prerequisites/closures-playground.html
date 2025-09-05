@@ -163,21 +163,55 @@
       // YOUR IMPLEMENTATIONS GO HERE
       // ========================================
 
+      // Challenge 1: Implement createCounter()
+      function createCounter() {
+        let count = 0;
+        return function () {
+          return count++;
+        };
+        // TODO: Your implementation here
+        // Should return a function that increments and returns count
+      }
+
       // Challenge 2: Uses your createCounter() function
 
       // Challenge 3: Modify createCounter to accept starting value
       function createCounterWithStart(start) {
         // TODO: Your implementation here
+        let count = start;
+        return function () {
+          return start++;
+        };
       }
 
       // Challenge 4: Implement createUser(name)
       function createUser(name) {
         // TODO: Your implementation here
         // Should return object with getName(), getAge(), birthday() methods
+        const userName = name;
+        let age = 0;
+        function birthday() {
+          return age++;
+        }
+        function getAge() {
+          return age;
+        }
+        function getName() {
+          return userName;
+        }
+        return { getName, getAge, birthday };
       }
 
       // Challenge 5: Implement createReactive(initialValue)
       function createReactive(initialValue) {
+        let val = initialValue;
+
+        function subscribe(newValue) {
+          return (val = newValue);
+        }
+
+        return { subscribe };
+        console.log(val);
         // TODO: Your implementation here
         // Should return object with value property and subscribe method
       }
@@ -202,12 +236,6 @@
           output.innerHTML = `<strong>❌ Error:</strong> ${error.message}`;
           output.style.background = "#ffe8e8";
         }
-      }
-
-      // Challenge 1: Implement createCounter()
-      function createCounter() {
-        // TODO: Your implementation here
-        // Should return a function that increments and returns count
       }
 
       function testMultipleCounters() {
@@ -253,6 +281,7 @@
           const user = createUser("Alice");
           const results = [];
           results.push(`Name: ${user.getName()}`);
+          console.log(user.getAge());
           results.push(`Initial age: ${user.getAge()}`);
           user.birthday();
           user.birthday();
@@ -280,6 +309,8 @@
 
         try {
           const reactive = createReactive("Hello");
+          console.log("Reactive object:", reactive);
+          console.log("Subscribe exists?", typeof reactive.subscribe);
           const messages = [];
 
           // Subscribe to changes
